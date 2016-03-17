@@ -51,6 +51,10 @@ if ENV['STANDALONE_SPEC']
       exit 1
     end
 
+    if ENV['SSH_KEY']
+      options[:keys] = ENV['SSH_KEY']
+    end
+
     c.host = ENV['TARGET_HOST']
     c.ssh_options = options.merge(Net::SSH::Config.for(c.host))
 
